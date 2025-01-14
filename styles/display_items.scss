@@ -1,0 +1,45 @@
+@import url(nav.scss);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Century gothic', sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.content {
+    padding: 24px;
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+}
+
+#itemsTable {
+    table {
+        border: none;
+        box-shadow: none;
+        outline: none;
+        border-collapse: collapse;
+
+        width: 100%;
+
+        th {
+        }
+    }
+
+    tr:nth-child(even) {
+        background: #D5DAE0;
+    }
+
+    td {
+        padding: 4px;
+    }
+}

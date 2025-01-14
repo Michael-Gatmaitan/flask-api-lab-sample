@@ -17,7 +17,7 @@ def get_items():
     
     response = jsonify(items)
     response.headers.add('Access-Control-Allow-Origin', '*')
-    db.close() 
+    db.close()
     
     return response 
 

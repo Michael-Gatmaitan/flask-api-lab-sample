@@ -1,0 +1,88 @@
+@import url(nav.scss);
+
+* {
+    box-sizing: border-box;
+    font-family: "Century gothic", sans-serif;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.content {
+    padding: 24px;
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+}
+
+.content {
+    form {
+        border-radius: 12px;
+        width: 100%;
+        background-color: #d5dae0;
+        padding: 18px;
+
+        h1 {
+            margin: 0;
+            margin-bottom: 24px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            margin-top: 4px;
+            border: solid 2px #dbdbdb;
+            padding: 8px;
+            width: 100%;
+            border-radius: 8px;
+            transition: border 0.2s ease-in;
+        
+            &:focus {
+                border: solid 2px #afafaf;
+            }
+        }
+
+        .btns {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            justify-content: center;
+
+            button {
+                flex: 1;
+                cursor: pointer;
+                padding: 8px 12px;
+                background-color: #2e7a52;
+                color: #fff;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: background 0.2s ease-in;
+
+                &:hover {
+                    background-color: #266142;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        form {
+            max-width: 600px;
+        }
+    }
+  }
+  
