@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Items List</title>
+    <script>
+      async function fetchItems() {
+        const response = await fetch("http://127.0.0.1:5000/api/items");
+        const items = await response.json();
+        console.log(items);
+        let table =
+          "<table border='1'><tr><th>Item Code</th><th>Description</th><th>Unit Price</th><th>Quantity</th></tr>";
+        items.forEach((item) => {
+          table += `<tr>
+              <td>${item.itemcode}</td>
+              <td>${item.item_description}</td>
+              <td>${item.item_unitprice}</td>
+              <td>${item.item_quantity}</td>
+            </tr>`;
+        });
+        table += "</table>";
+        document.getElementById("itemsTable").innerHTML = table;
+      }
+      window.onload = fetchItems;
+    </script>
+  </head>
+  <body>
+    <h1>Items List</h1>
+    <div id="itemsTable"></div>
+  </body>
+</html>
