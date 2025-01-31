@@ -1,66 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/display_items.css">
-  <title>Items List</title>
-  <script>
-    async function fetchItems() {
-      const response = await fetch("http://127.0.0.1:5000/api/items");
-      const items = await response.json();
-      console.log(items);
-      let table =
-        "<table border='1' cellspacing='0' cellpadding='0'><tr><th>Item Code</th><th>Description</th><th>Unit Price</th><th>Quantity</th></tr>";
-      items.forEach((item) => {
-        table += `<tr>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/display_items.css" />
+    <title>Items List</title>
+    <script>
+      async function fetchItems() {
+        const response = await fetch("http://127.0.0.1:5000/api/items");
+        const items = await response.json();
+        console.log(items);
+        let table =
+          "<table border='1' cellspacing='0' cellpadding='0'><tr><th>Item Code</th><th>Description</th><th>Unit Price</th><th>Quantity</th></tr>";
+        items.forEach((item) => {
+          table += `<tr>
               <td>${item.itemcode}</td>
               <td>${item.item_description}</td>
               <td>${item.item_unitprice}</td>
               <td>${item.item_quantity}</td>
             </tr>`;
-      });
-      table += "</table>";
-      document.getElementById("itemsTable").innerHTML = table;
-    }
-    window.onload = fetchItems;
-  </script>
-  <script src="./scripts/toggle.js"></script>
-</head>
+        });
+        table += "</table>";
+        document.getElementById("itemsTable").innerHTML = table;
+      }
+      window.onload = fetchItems;
+    </script>
+    <script src="./scripts/toggle.js"></script>
+  </head>
 
-<body>
+  <body>
+    <nav>
+      <button onclick="toggleSidebar()">
+        <img src="./public/menu.png" alt="menu" />
+      </button>
+    </nav>
 
-  <nav>
-    <button onclick="toggleSidebar()">
-      <img src="./public/menu.png" alt="menu">
-    </button>
-  </nav>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="./public/P.O.S_LOGO 1.png" alt="logo" />
+      </div>
 
-  <div class="sidebar">
-    <div class="logo">
-      <img src="./public/P.O.S_LOGO 1.png" alt="logo">
+      <a href="/flask-api-lab-sample/">
+        <button class="sidebar-btn">
+          <img src="./public/KAPE IBARRA POS/add.png" alt="add" />
+          <p>Add item</p>
+        </button>
+      </a>
+
+      <a href="/flask-api-lab-sample/display_items.html">
+        <button class="sidebar-btn">
+          <img src="./public/KAPE IBARRA POS/list.png" alt="list" />
+          <p>Item list</p>
+        </button>
+      </a>
     </div>
 
-    <a href="/ehe/">
-      <button class="sidebar-btn">
-        <img src="./public/KAPE IBARRA POS/add.png" alt="add">
-        <p>Add item</p>
-      </button>
-    </a>
-
-    <a href="/ehe/display_items.html">
-      <button class="sidebar-btn">
-        <img src="./public/KAPE IBARRA POS/list.png" alt="list">
-        <p>Item list</p>
-      </button>
-    </a>
-  </div>
-
-  <div class="content">
-    <h1>Items List</h1>
-    <div id="itemsTable"></div>
-  </div>
-</body>
-
+    <div class="content">
+      <h1>Items List</h1>
+      <div id="itemsTable"></div>
+    </div>
+  </body>
 </html>
