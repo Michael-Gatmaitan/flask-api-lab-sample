@@ -23,14 +23,14 @@
             <img src="./public/P.O.S_LOGO 1.png" alt="logo">
         </div>
 
-        <a href="/ehe/">
+        <a href="/flask-api-lab-sample/">
             <button class="sidebar-btn">
                 <img src="./public/KAPE IBARRA POS/add.png" alt="add">
                 <p>Add item</p>
             </button>
         </a>
 
-        <a href="/ehe/display_items.html">
+        <a href="/flask-api-lab-sample/display_items.html">
             <button class="sidebar-btn">
                 <img src="./public/KAPE IBARRA POS/list.png" alt="list">
                 <p>Item list</p>
