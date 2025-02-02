@@ -1,30 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/display_items.css" />
-    <title>Items List</title>
-    <script>
-      async function fetchItems() {
-        const response = await fetch("http://127.0.0.1:5000/api/items");
-        const items = await response.json();
-        console.log(items);
-        let table =
-          "<table border='1' cellspacing='0' cellpadding='0'><tr><th>Item Code</th><th>Description</th><th>Unit Price</th><th>Quantity</th></tr>";
-        items.forEach((item) => {
-          table += `<tr>
-              <td>${item.itemcode}</td>
-              <td>${item.item_description}</td>
-              <td>${item.item_unitprice}</td>
-              <td>${item.item_quantity}</td>
-            </tr>`;
-        });
-        table += "</table>";
-        document.getElementById("itemsTable").innerHTML = table;
-      }
-      window.onload = fetchItems;
-    </script>
+    <link rel="stylesheet" href="styles/display_items.css" />
+    <!-- <link rel="stylesheet" href="styles/nav.css" /> -->
+    <title>items list</title>
     <script src="./scripts/toggle.js"></script>
   </head>
 
@@ -37,27 +18,48 @@
 
     <div class="sidebar">
       <div class="logo">
-        <img src="./public/P.O.S_LOGO 1.png" alt="logo" />
+        <img src="./public/p.o.s_logo 1.png" alt="logo" />
       </div>
 
       <a href="/flask-api-lab-sample/">
         <button class="sidebar-btn">
-          <img src="./public/KAPE IBARRA POS/add.png" alt="add" />
-          <p>Add item</p>
+          <img src="./public/kape ibarra pos/add.png" alt="add" />
+          <p>add item</p>
         </button>
       </a>
 
       <a href="/flask-api-lab-sample/display_items.html">
         <button class="sidebar-btn">
-          <img src="./public/KAPE IBARRA POS/list.png" alt="list" />
-          <p>Item list</p>
+          <img src="./public/kape ibarra pos/list.png" alt="list" />
+          <p>item list</p>
         </button>
       </a>
     </div>
 
     <div class="content">
-      <h1>Items List</h1>
+      <h1>items list</h1>
       <div id="itemsTable"></div>
     </div>
+
+    <script>
+      async function fetchitems() {
+        const response = await fetch("http://127.0.0.1:5000/api/items");
+        const items = await response.json();
+        console.log(items);
+        let table =
+          "<table border='1' cellspacing='0' cellpadding='0'><tr><th>item code</th><th>description</th><th>unit price</th><th>quantity</th></tr>";
+        items.forEach((item) => {
+          table += `<tr>
+                    <td>${item.itemcode}</td>
+                    <td>${item.item_description}</td>
+                    <td>${item.item_unitprice}</td>
+                    <td>${item.item_quantity}</td>
+                  </tr>`;
+        });
+        table += "</table>";
+        document.getElementById("itemsTable").innerHTML = table;
+      }
+      window.onload = fetchitems;
+    </script>
   </body>
 </html>

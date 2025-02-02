@@ -1,4 +1,3 @@
-@import url(nav.scss);
 * {
   box-sizing: border-box;
   font-family: "Century gothic", sans-serif;
@@ -11,14 +10,14 @@ html {
   background-color: #ffffff;
 }
 
-.content {
-  padding: 24px;
-}
-
 input,
 button {
   outline: none;
   border: none;
+}
+
+.content {
+  padding: 24px;
 }
 
 .content form {
@@ -72,6 +71,8 @@ button {
     justify-content: center;
   }
   .content form {
-    max-width: 600px;
+    max-width: 650px;
   }
-}/*# sourceMappingURL=index.css.map */
+}
+
+/*# sourceMappingURL=index.css.map */

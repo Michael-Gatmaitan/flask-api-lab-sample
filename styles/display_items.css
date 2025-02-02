@@ -29,8 +29,10 @@ button {
   width: 100%;
 }
 #itemsTable tr:nth-child(even) {
-  background: #D5DAE0;
+  background: #d5dae0;
 }
 #itemsTable td {
   padding: 4px;
-}/*# sourceMappingURL=display_items.css.map */
+}
+
+/*# sourceMappingURL=display_items.css.map */
