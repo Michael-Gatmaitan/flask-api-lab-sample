@@ -43,19 +43,29 @@ def handle_add_item():
             password="",  # Replace with your MySQL password
             database="inventory_db",
         )
+
+        # get url arguments
         # description = request.args["item_description"]
-        # print(description)
+
         cursor = db.cursor(dictionary=True)
-        query = "INSERT INTO items (item_description, item_unitprice, item_quantity) VALUES ('Sample description', 200, 10)"
+        query = """INSERT INTO items (item_description, item_unitprice, item_quantity)
+        VALUES ('Sample description', 200, 280)"""
+        # VALUES (%s, %s, %s)"""
+        # record = ("Sample description 2", 200, 10)
+        # cursor.execute(query, record)
         cursor.execute(query)
+        db.commit()
+        print(cursor.rowcount)
+        cursor.close()
 
-        createdItem = cursor.fetchall()
-        print(createdItem)
+        # createdItem = cursor.fetchall()
+        # print(createdItem)
+        #
+        # response = jsonify(createdItem)
+        # response.headers.add("Access-Control-Allow-Origin", "*")
 
-        response = jsonify(createdItem)
-        response.headers.add("Access-Control-Allow-Origin", "*")
-
-        return response
+        # return jsonify("added")
+        return str(cursor.rowcount)
 
 
 @app.route("/api/items/<item_id>", methods=["GET", "POST"])
