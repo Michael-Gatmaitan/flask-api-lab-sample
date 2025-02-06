@@ -90,6 +90,13 @@ button {
         }
       }
     }
+
+    .btn-container {
+      background-color: #f00;
+      display: grid;
+      width: 100%;
+      gap: 12px;
+    }
   }
 }
 
