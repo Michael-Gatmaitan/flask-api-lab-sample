@@ -76,7 +76,7 @@ Please make sure to update tests as appropriate.
 
 ## Information
 
-This template is from Sir Randy Pangilinan (Crono Bane) and I (Michael Gatmaitan) made the design and debugged the code to make it work as a part of activity.
+This template is from Crono Bane and I made the design and debugged the code to make it work as a part of activity.
 
 ## License
 
