@@ -92,10 +92,25 @@ button {
     }
 
     .btn-container {
-      background-color: #f00;
-      display: grid;
+      display: flex;
       width: 100%;
       gap: 12px;
+      margin-top: 12px;
+
+      button {
+        flex: 1;
+        cursor: pointer;
+        padding: 8px 12px;
+        background-color: #2e7a52;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background 0.2s ease-in;
+
+        &:hover {
+          background-color: #266142;
+        }
+      }
     }
   }
 }

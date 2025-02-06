@@ -6,10 +6,10 @@ This template uses flask, a lightweight WSGI web application framework and PHP a
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install libraries.
 
-### Install [flask](https://flask.palletsprojects.com/) and mysql.connector
+### Install [flask](https://flask.palletsprojects.com/), flask_cors and mysql.connector
 
 ```bash
-pip install flask mysql.connector
+pip install flask flask_cors mysql.connector
 ```
 
 ## Usage
@@ -28,14 +28,34 @@ git clone https://github.com/Michael-Gatmaitan/flask-api-lab-sample
 
 - Navigate to [phpMyAdmin](http://localhost/phpmyadmin/)
 - Create a database named **inventory_db**
-- Navigate to SQL section and run this query to create table for items
+- Navigate to SQL section and run this query to create table for items and users
 
 ```sql
-CREATE TABLE items (
+CREATE TABLE IF NOT EXISTS items (
     itemcode INT AUTO_INCREMENT PRIMARY KEY,
     item_description VARCHAR(255) NOT NULL,
     item_unitprice DECIMAL(10, 2) NOT NULL,
     item_quantity INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL
+);
+```
+
+- Create a database named **pos_db**
+- Navigate to SQL section and run this query to create table for orders
+
+```sql
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    itemcode INT NOT NULL,
+    payment DECIMAL(10, 2) NOT NULL,
+    p_change DECIMAL(10, 2) NOT NULL,
+    order_quantity INT NOT NULL
 );
 ```
 

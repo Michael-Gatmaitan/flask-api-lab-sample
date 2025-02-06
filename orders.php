@@ -1,9 +1,39 @@
 <?php include("templates/top.php"); ?>
 
 <script defer>
-    function submitOrder() {
-        // e.preventDefault();
-        console.log("mamamo")
+    function submitOrder(e) {
+        // http://127.0.0.1:5000/api/orders?user_id=3&itemcode=3&payment=1000&order_quantity=1
+      e.preventDefault();
+      const form = document.getElementsByTagName("form")[0];
+      console.log("mamamo");
+
+      const formData = new FormData(form);
+      console.log(formData);
+
+      // const { user_id, itemcode, payment, order_quantity } = formData;
+      const user_id = formData.get("user_id");
+      const itemcode = formData.get("itemcode");
+      const payment = formData.get("payment");
+      const order_quantity = formData.get("order_quantity");
+
+      async function performSubmit() {
+        try {
+          const url = `http://127.0.0.1:5000/api/orders?user_id=${user_id}&itemcode=${itemcode}&payment=${payment}&order_quantity=${order_quantity}`;
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
+          });
+
+          console.log(response);
+        } catch(err) {
+          console.log(err)
+        }
+      }
+
+      performSubmit();
     }
 
     async function insertUsers() {
@@ -16,7 +46,7 @@
 
         for (let user of result) {
             selectTag.innerHTML += `
-                <option value="${user.id}">${user.firstname} ${user.lastname}</option>
+                <option value="${user.id}">${user.first_name} ${user.last_name}</option>
             `;
         }
     }
@@ -46,7 +76,7 @@
 </script>
 
 
-<form onsubmit="submitOrder()">
+<form onsubmit="return submitOrder(event)">
 
     <div>
         <label for="user_id">Select user:</label>
