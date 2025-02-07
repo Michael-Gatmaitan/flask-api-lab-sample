@@ -1,7 +1,22 @@
 <?php include("templates/top.php"); ?>
 
 <script defer>
-    function submitOrder(e) {
+
+    async function getItemInfo(itemcode) {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/api/items/${itemcode}`);
+        const data = await response.json();
+
+        console.log(data);
+
+        return data[0];
+      } catch(err) {
+        console.log(err);
+        return { message: `Error getting item with itemcode of ${itemcode}`}
+      }
+    }
+    
+    async function submitOrder(e) {
         // http://127.0.0.1:5000/api/orders?user_id=3&itemcode=3&payment=1000&order_quantity=1
       e.preventDefault();
       const form = document.getElementsByTagName("form")[0];
@@ -16,6 +31,18 @@
       const payment = formData.get("payment");
       const order_quantity = formData.get("order_quantity");
 
+      const item = await getItemInfo(itemcode);
+      console.log(item, "hehe")
+
+      if (item.item_quantity < order_quantity) {
+        // Order quantity should not be greater than available item quantity
+      }
+
+      const totalPrice = item.item_unitprice * order_quantity;
+      if (totalPrice < payment) {
+        // Item price * order quantity should be greater than or equal to payment
+      }
+
       async function performSubmit() {
         try {
           const url = `http://127.0.0.1:5000/api/orders?user_id=${user_id}&itemcode=${itemcode}&payment=${payment}&order_quantity=${order_quantity}`;
@@ -23,7 +50,6 @@
             method: "POST",
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'
             }
           });
 
